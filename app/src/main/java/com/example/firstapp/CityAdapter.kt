@@ -10,11 +10,12 @@ import com.example.firstapp.R
 class CityAdapter(private var values: List<City>, var listener: ((City) -> Unit)? = null) : RecyclerView.Adapter<CityAdapter.ViewHolder>() {
 
 
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+
+
         // each data item is just a string in this case
         val txtHeader: TextView
         val txtFooter: TextView
@@ -24,16 +25,6 @@ class CityAdapter(private var values: List<City>, var listener: ((City) -> Unit)
             txtFooter = view.findViewById<View>(R.id.secondLine) as TextView
         }
     }
-
-    /*fun add(position: Int, item: City) {
-        values.add(position, item)
-        notifyItemInserted(position)
-    }
-
-    fun remove(position: Int) {
-        values.removeAt(position)
-        notifyItemRemoved(position)
-    }*/
 
     fun updateList(values: List<City>) {
         this.values = values

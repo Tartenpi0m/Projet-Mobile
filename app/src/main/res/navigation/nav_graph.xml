@@ -9,7 +9,7 @@
         android:id="@+id/CityListFragment"
         android:name="com.example.firstapp.CityListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_list">
 
         <action
             android:id="@+id/action_CityListFragment_to_CityDetailFragment"
@@ -19,7 +19,7 @@
         android:id="@+id/CityDetailFragment"
         android:name="com.example.firstapp.CityDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_details">
 
         <action
             android:id="@+id/action_CityDetailFragment_to_CityListFragment"
