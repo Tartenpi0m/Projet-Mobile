@@ -1,6 +1,6 @@
 package com.example.firstapp;
 
-public class wind {
+public class Wind {
     private float speed;
     private Integer deg;
 

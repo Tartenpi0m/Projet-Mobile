@@ -1,6 +1,6 @@
 package com.example.firstapp;
 
-public class rain {
+public class Rain {
 
     private float h;
 

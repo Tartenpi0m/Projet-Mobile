@@ -4,30 +4,30 @@ import java.util.List;
 
 public class City {
     private String name;
-    private main main;
-    private wind wind;
-    private clouds clouds;
+    private Main main;
+    private Wind wind;
+    private Clouds clouds;
 
 
-    private List<weather> weather;
+    private List<Weather> weather;
 
     public String getName() {
         return name;
     }
 
-    public com.example.firstapp.main getMain() {
+    public Main getMain() {
         return main;
     }
 
-    public com.example.firstapp.wind getWind() {
+    public Wind getWind() {
         return wind;
     }
 
-    public com.example.firstapp.clouds getClouds() {
+    public Clouds getClouds() {
         return clouds;
     }
 
-    public List<com.example.firstapp.weather> getWeather() {
+    public List<Weather> getWeather() {
         return weather;
     }
 

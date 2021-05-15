@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CityListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView;
-    private var mAdapter = CityAdapter(mutableListOf(), ::OnClickedCity)
+    private var mAdapter = CityAdapter(listOf(), ::onClickedCity)
 
 
 
@@ -41,6 +42,7 @@ class CityListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recycler_view);
+
         showList()
         makeApiCall()
     }
@@ -99,10 +101,12 @@ class CityListFragment : Fragment() {
     }
 
 
-    private fun OnClickedCity(city: City) {
+    private fun onClickedCity(city: City) {
 
-        findNavController().navigate(R.id.action_CityListFragment_to_CityDetailFragment)
+        findNavController().navigate(R.id.action_CityListFragment_to_CityDetailFragment, bundleOf("cityObject" to city))
     }
+
+
 
 
 }

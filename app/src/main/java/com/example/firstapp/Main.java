@@ -1,6 +1,6 @@
 package com.example.firstapp;
 
-public class main {
+public class Main {
     private float temp;
     private float feels_like;
     private Integer pressure;

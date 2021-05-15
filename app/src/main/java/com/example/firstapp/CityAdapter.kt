@@ -46,7 +46,7 @@ class CityAdapter(private var values: List<City>, var listener: ((City) -> Unit)
         // - replace the contents of the view with that element
         val city = values[position]
         holder.txtHeader.text = city.name
-        holder.txtFooter.text = "Footer: " + city.main.temp
+        holder.txtFooter.text = "Temp : " + city.main.temp + " Windspeed : " + city.wind.speed
         holder.itemView.setOnClickListener { listener?.invoke(city) }
     }
 

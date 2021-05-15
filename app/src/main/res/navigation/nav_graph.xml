@@ -20,6 +20,10 @@
         android:name="com.example.firstapp.CityDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_details">
+        <argument
+            android:name="cityObject"
+            app:argType="City"
+            android:defaultValue="@null"/>
 
         <action
             android:id="@+id/action_CityDetailFragment_to_CityListFragment"

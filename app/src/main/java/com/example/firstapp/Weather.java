@@ -1,6 +1,6 @@
 package com.example.firstapp;
 
-public class weather {
+public class Weather {
     private int id; //A ENLEVER
     private String main;
     private String description;

@@ -1,6 +1,6 @@
 package com.example.firstapp;
 
-public class clouds {
+public class Clouds {
     private Integer all;
 
     public Integer getAll() {
