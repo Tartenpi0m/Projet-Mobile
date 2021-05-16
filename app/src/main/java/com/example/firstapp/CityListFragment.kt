@@ -28,6 +28,8 @@ abstract class CityListFragment : Fragment() {
 
     private lateinit var searchView:SearchView
 
+    val sharedPreferences = getSharedPreferences("CityList", Context.MODE_PRIVATE)
+
 
 
     override fun onCreateView(
