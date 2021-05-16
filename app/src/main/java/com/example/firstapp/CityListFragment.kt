@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,11 +21,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class CityListFragment : Fragment() {
+abstract class CityListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView;
     private var adapter = CityAdapter(listOf(), ::onClickedCity)
 
+    private lateinit var searchView:SearchView
 
 
 
@@ -75,6 +76,10 @@ class CityListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         //recyclerView.layoutManager = GridLayoutManager(this,  2)
         recyclerView.adapter = mAdapter;*/
+    }
+
+    private fun showFilteredList(CityList: List<City>) {
+        adapter.updateList(CityList)
     }
 
     val BASE_URL = "http://api.openweathermap.org/data/2.5/"
