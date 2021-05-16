@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CityListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView;
-    private var mAdapter = CityAdapter(listOf(), ::onClickedCity)
+    private var adapter = CityAdapter(listOf(), ::onClickedCity)
 
 
 
@@ -42,20 +43,38 @@ class CityListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = this@CityListFragment.adapter
+        }
 
-        showList()
-        makeApiCall()
+        //val list = getListFromCache()
+
+       // if(list.isEmpty()) {
+
+            makeApiCall()
+       // } else {
+           // showList(list)
+       // }
+
     }
 
-    private fun showList() {
+  /*  private fun getListFromCache(): List<City> {
+        //TODO
+    }
+    private fun saveListIntoCache(): List<City> {
+        //TODO
+    }*/
 
-        recyclerView.setHasFixedSize(true);
+    private fun showList(CityList: List<City>) {
+
+        adapter.updateList(CityList)
+       /*/ recyclerView.setHasFixedSize(true);
 
         //use a linear layout manager
         recyclerView.layoutManager = LinearLayoutManager(context)
         //recyclerView.layoutManager = GridLayoutManager(this,  2)
-        recyclerView.adapter = mAdapter;
-
+        recyclerView.adapter = mAdapter;*/
     }
 
     val BASE_URL = "http://api.openweathermap.org/data/2.5/"
@@ -78,7 +97,8 @@ class CityListFragment : Fragment() {
 
                     val allCityRestResponse: AllCityRestResponse = response.body()!!
                     Toast.makeText(context, "API SUCCESS", Toast.LENGTH_SHORT).show();
-                    mAdapter.updateList(allCityRestResponse.list)
+                    //saveListIntoCache()
+                    adapter.updateList(allCityRestResponse.list)
 
                 } else {
                     showError()
