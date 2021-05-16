@@ -1,7 +1,11 @@
 package com.example.firstapp;
 
 public class Weather {
-    private int id; //A ENLEVER
+    public Weather(String main, String description) {
+        this.main = main;
+        this.description = description;
+    }
+
     private String main;
     private String description;
 

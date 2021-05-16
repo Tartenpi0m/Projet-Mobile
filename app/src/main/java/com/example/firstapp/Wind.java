@@ -1,6 +1,11 @@
 package com.example.firstapp;
 
 public class Wind {
+    public Wind(float speed, Integer deg) {
+        this.speed = speed;
+        this.deg = deg;
+    }
+
     private float speed;
     private Integer deg;
 

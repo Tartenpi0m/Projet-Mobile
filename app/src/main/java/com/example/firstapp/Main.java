@@ -1,6 +1,13 @@
 package com.example.firstapp;
 
 public class Main {
+    public Main(float temp, float feels_like, Integer pressure, Integer humidity) {
+        this.temp = temp;
+        this.feels_like = feels_like;
+        this.pressure = pressure;
+        this.humidity = humidity;
+    }
+
     private float temp;
     private float feels_like;
     private Integer pressure;
