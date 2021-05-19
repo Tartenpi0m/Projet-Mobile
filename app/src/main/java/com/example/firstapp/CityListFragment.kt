@@ -1,6 +1,8 @@
 package com.example.firstapp
 
+import android.content.Context
 import android.os.Bundle
+import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
@@ -25,9 +28,9 @@ class CityListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView;
     private var adapter = CityAdapter(listOf(), ::onClickedCity)
+    var cityId = 0
 
-
-
+    private lateinit var cache:SharedPreference;
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,9 @@ class CityListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list, container, false)
+
+
+
     }
 
 
@@ -42,29 +48,39 @@ class CityListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        cache=SharedPreference(requireContext())
+
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@CityListFragment.adapter
         }
 
-        //val list = getListFromCache()
-
-       // if(list.isEmpty()) {
-
+        if(cache.checkCache()) {
+            var list=getListFromCache(cache)
+        } else {
             makeApiCall()
-       // } else {
-           // showList(list)
-       // }
+        }
 
     }
 
-  /*  private fun getListFromCache(): List<City> {
-        //TODO
+    private fun getListFromCache(cache:SharedPreference): List<City> {
+
+        var list: MutableList<City> = ArrayList<City>()
+        for(id in 1 until 20) {
+            list.add(cache.retrieveCity(id))
+        }
+        return list
     }
-    private fun saveListIntoCache(): List<City> {
-        //TODO
-    }*/
+
+    private fun saveListIntoCache(cache:SharedPreference, list: List<City>) {
+        cache.initCache()
+        var id = 1
+        for(city in list) {
+            cache.saveCity(id,city)
+            id ++
+        }
+    }
 
     private fun showList(CityList: List<City>) {
 
@@ -97,7 +113,7 @@ class CityListFragment : Fragment() {
 
                     val allCityRestResponse: AllCityRestResponse = response.body()!!
                     Toast.makeText(context, "API SUCCESS", Toast.LENGTH_SHORT).show();
-                    //saveListIntoCache()
+                    saveListIntoCache(cache, allCityRestResponse.list)
                     adapter.updateList(allCityRestResponse.list)
 
                 } else {
@@ -125,7 +141,6 @@ class CityListFragment : Fragment() {
 
         findNavController().navigate(R.id.action_CityListFragment_to_CityDetailFragment, bundleOf("cityObject" to city))
     }
-
 
 
 
