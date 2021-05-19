@@ -79,13 +79,7 @@ class SharedPreference(val context: Context) {
         saveString("cache", "yes")
     }
 
-    fun checkCache() : Int  {
-        var string = retrieveString("cache")
-        if(string == "yes") {
-            return 1
-        } else {
-            return 0
-        }
-    }
+    fun checkCache() : Boolean  = "yes"==retrieveString("cache")
+
 
 }

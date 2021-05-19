@@ -30,11 +30,7 @@ class CityListFragment : Fragment() {
     private var adapter = CityAdapter(listOf(), ::onClickedCity)
     var cityId = 0
 
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        val cache:SharedPreference=SharedPreference(context)
-    }
+    private lateinit var cache:SharedPreference;
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -52,13 +48,15 @@ class CityListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        cache=SharedPreference(requireContext())
+
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@CityListFragment.adapter
         }
 
-        if(cache.checkCache) {
+        if(cache.checkCache()) {
             var list=getListFromCache(cache)
         } else {
             makeApiCall()
