@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentContainerView
@@ -28,7 +29,7 @@ class CityListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView;
     private var adapter = CityAdapter(listOf(), ::onClickedCity)
-    var cityId = 0
+    private lateinit var button_actualiser: Button
 
     private lateinit var cache:SharedPreference;
 
@@ -48,7 +49,13 @@ class CityListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         cache=SharedPreference(requireContext())
+
+        button_actualiser = view.findViewById(R.id.button_actualiser)
+        button_actualiser.setOnClickListener {
+            makeApiCall()
+        }
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.apply {
@@ -58,6 +65,7 @@ class CityListFragment : Fragment() {
 
         if(cache.checkCache()) {
             var list=getListFromCache(cache)
+            showList(list)
         } else {
             makeApiCall()
         }
