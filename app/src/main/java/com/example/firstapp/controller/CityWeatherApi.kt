@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.controller
 
 import retrofit2.Call
 import retrofit2.http.GET

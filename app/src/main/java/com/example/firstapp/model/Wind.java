@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.example.firstapp.model;
 
 public class Wind {
     public Wind(float speed, Integer deg) {

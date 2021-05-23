@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.controller
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstapp.R
+import com.example.firstapp.model.City
 
 class CityAdapter(private var values: List<City>, var listener: ((City) -> Unit)? = null) : RecyclerView.Adapter<CityAdapter.ViewHolder>() {
 

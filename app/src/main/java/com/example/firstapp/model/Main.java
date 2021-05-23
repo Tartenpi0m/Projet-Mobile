@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.example.firstapp.model;
 
 public class Main {
     public Main(float temp, float feels_like, Integer pressure, Integer humidity) {

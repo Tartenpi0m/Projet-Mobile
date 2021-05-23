@@ -1,6 +1,4 @@
-package com.example.firstapp;
-
-import java.util.List;
+package com.example.firstapp.model;
 
 public class City {
     public City(String name, Main main, Wind wind, Clouds clouds, Weather weather, Rain rain) {

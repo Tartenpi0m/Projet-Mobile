@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import org.w3c.dom.Text
-import kotlin.reflect.typeOf
+import com.example.firstapp.model.City
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.

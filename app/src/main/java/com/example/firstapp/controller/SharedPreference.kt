@@ -1,7 +1,8 @@
-package com.example.firstapp
+package com.example.firstapp.controller
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.firstapp.model.*
 
 /**
  * Created by Kolincodes on 10/05/2018.
@@ -65,12 +66,33 @@ class SharedPreference(val context: Context) {
 
         }
 
-        var main: Main = Main(retrieveFloat(cityname+"temp"), 0.0F, null, null)
-        var rain: Rain = Rain(0.0F)
-        var clouds: Clouds = Clouds(0)
-        var weather: Weather = Weather("No description", "No long description")
-        var wind: Wind = Wind(retrieveFloat(cityname+"speed"), 0)
-        var city:City = City(retrieveString(id.toString()),main,wind,clouds,weather, rain)
+        var main: Main =
+            Main(
+                retrieveFloat(cityname + "temp"),
+                0.0F,
+                null,
+                null
+            )
+        var rain: Rain =
+            Rain(0.0F)
+        var clouds: Clouds =
+            Clouds(0)
+        var weather: Weather =
+            Weather(
+                "No description",
+                "No long description"
+            )
+        var wind: Wind =
+            Wind(retrieveFloat(cityname + "speed"), 0)
+        var city: City =
+            City(
+                retrieveString(id.toString()),
+                main,
+                wind,
+                clouds,
+                weather,
+                rain
+            )
 
         return city
     }

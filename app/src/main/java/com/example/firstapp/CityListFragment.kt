@@ -1,8 +1,6 @@
 package com.example.firstapp
 
-import android.content.Context
 import android.os.Bundle
-import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstapp.controller.AllCityRestResponse
+import com.example.firstapp.controller.CityAdapter
+import com.example.firstapp.controller.CityWeatherApi
+import com.example.firstapp.controller.SharedPreference
+import com.example.firstapp.model.City
 import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +33,7 @@ class CityListFragment : Fragment() {
     private var adapter = CityAdapter(listOf(), ::onClickedCity)
     private lateinit var button_actualiser: Button
 
-    private lateinit var cache:SharedPreference;
+    private lateinit var cache: SharedPreference;
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +52,7 @@ class CityListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        cache=SharedPreference(requireContext())
+        cache= SharedPreference(requireContext())
 
         button_actualiser = view.findViewById(R.id.button_actualiser)
         button_actualiser.setOnClickListener {
@@ -72,7 +74,7 @@ class CityListFragment : Fragment() {
 
     }
 
-    private fun getListFromCache(cache:SharedPreference): List<City> {
+    private fun getListFromCache(cache: SharedPreference): List<City> {
 
         var list: MutableList<City> = ArrayList<City>()
         for(id in 1 until 20) {
@@ -81,7 +83,7 @@ class CityListFragment : Fragment() {
         return list
     }
 
-    private fun saveListIntoCache(cache:SharedPreference, list: List<City>) {
+    private fun saveListIntoCache(cache: SharedPreference, list: List<City>) {
         cache.initCache()
         var id = 1
         for(city in list) {

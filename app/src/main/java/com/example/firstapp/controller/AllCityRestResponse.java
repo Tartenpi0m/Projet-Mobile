@@ -1,4 +1,6 @@
-package com.example.firstapp;
+package com.example.firstapp.controller;
+
+import com.example.firstapp.model.City;
 
 import java.util.List;
 
