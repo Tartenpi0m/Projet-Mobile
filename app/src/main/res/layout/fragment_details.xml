@@ -9,45 +9,77 @@
 
     <TextView
         android:id="@+id/textview_name"
-        android:layout_width="match_parent"
+            android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nom de la ville"
-        android:textStyle="bold"
+        android:text="Paris"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/textview_main_temp"
+        android:textStyle="bold"
+        android:background="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+         />
+
+    <TextView
+        android:id="@+id/textview_weather_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:text="Quelques nuages"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/textview_name" />
 
     <TextView
         android:id="@+id/textview_main_temp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="40°"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/textview_wind_speed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="température : 18°"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/textview_weather_description"
+        app:layout_constraintTop_toBottomOf="@id/textview_weather_description"
+        />
 
     <TextView
         android:id="@+id/textview_wind_speed"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Vent : 20 km/h"
+        app:layout_constraintStart_toStartOf="@id/textview_weather_description"
+        app:layout_constraintTop_toBottomOf="@id/textview_main_temp"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/textview_main_feelslike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ressentie : 15°"
+        app:layout_constraintStart_toStartOf="@id/textview_weather_description"
+        app:layout_constraintTop_toBottomOf="@id/textview_wind_speed"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/textview_clouds_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuage : 20%"
+        app:layout_constraintStart_toStartOf="@id/textview_weather_description"
+        app:layout_constraintTop_toBottomOf="@id/textview_main_feelslike"
+        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/button_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/previous"
+        android:text="@string/retour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_wind_speed" />
+        app:layout_constraintStart_toStartOf="@id/textview_weather_description"
+        app:layout_constraintTop_toBottomOf="@id/textview_wind_speed"
+        android:textSize="25sp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

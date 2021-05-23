@@ -34,6 +34,12 @@ class CityDetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.textview_name).text = city.name
         view.findViewById<TextView>(R.id.textview_main_temp).text = city.main.temp.toString()
         view.findViewById<TextView>(R.id.textview_wind_speed).text = city.wind.speed.toString()
+        view.findViewById<TextView>(R.id.textview_main_feelslike).text = city.main.feels_like.toString()
+        view.findViewById<TextView>(R.id.textview_clouds_all).text = city.clouds.all.toString()
+        view.findViewById<TextView>(R.id.textview_weather_description).text = city.weather.description
+
+
+
     } else {
         view.findViewById<TextView>(R.id.textview_name).text = "Aucune ville sélectionnée"
     }
